@@ -7,7 +7,7 @@ import (
 	"strconv"
 	"os"
 	"strings"
-	"./utils"
+	"utils"
 )
 
 func NeverExit(f func()) {
