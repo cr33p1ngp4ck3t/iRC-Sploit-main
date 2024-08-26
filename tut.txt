@@ -4,7 +4,7 @@ The IRC botnet is an illicit project that uses iOT bots as a medium to launch ne
 1. Change main.go IP
 2. set GOOS=linux
 3. set GOARCH=mipsle
-4. go build .
+4. go build . 
 
 -Loading bots
 1. cd sploit
