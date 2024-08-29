@@ -6,7 +6,7 @@ import (
 )
 
 func RandomString(strlen int, icint bool) string { //Generates a random string
-	if icint != false {
+	if icint{
 		rand.Seed(time.Now().UTC().UnixNano())
 		const chars = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890"
 		result := make([]byte, strlen)
