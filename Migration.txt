@@ -1,0 +1,20 @@
+ls /usr/bin/python*
+
+
+sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.9 1
+sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.11 2
+
+sudo update-alternatives --config python
+
+nano ~/.bashrc
+export PATH="/home/yourusername/python3.9/bin:$PATH"
+source ~/.bashrc
+python3.9 --version
+sudo rm /usr/bin/python
+sudo ln -s /home/yourusername/python3.9/bin/python3.9 /usr/bin/python
+
+
+https://go.dev/dl/go1.19.13.linux-amd64.tar.gz
+
+export PATH=$PATH:/usr/local/go/bin
+source $HOME/.profile
